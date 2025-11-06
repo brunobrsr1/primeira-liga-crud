@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
     volumes:
-        - postgres_data:/var/lib/postgresql/data
+        - db:/data_postgres
     ports:
         - "5432:5432"
     healthcheck:
@@ -18,4 +18,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres_data:
+  db:
