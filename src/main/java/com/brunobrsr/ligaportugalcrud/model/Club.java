@@ -1,4 +1,4 @@
-package com.brunobrsr.ligaportugalcrud;
+package com.brunobrsr.ligaportugalcrud.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,9 +1,6 @@
-package com.brunobrsr.ligaportugalcrud;
+package com.brunobrsr.ligaportugalcrud.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -16,15 +13,19 @@ public class Player {
     private int age;
     private String position;
     private int shirtNumber;
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "club_id")
+    private Club club;
 
     public Player() {}
 
-    public Player(Long id, String name, int age, String position, int shirtNumber) {
+    public Player(Long id, String name, int age, String position, int shirtNumber, Club club) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.position = position;
         this.shirtNumber = shirtNumber;
+        this.club = club;
     }
 
     public Long getId() {
@@ -63,6 +64,14 @@ public class Player {
 
     public void setShirtNumber(int shirtNumber) {
         this.shirtNumber = shirtNumber;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     @Override

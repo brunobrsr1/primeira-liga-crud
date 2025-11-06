@@ -1,5 +1,7 @@
-package com.brunobrsr.ligaportugalcrud;
+package com.brunobrsr.ligaportugalcrud.service;
 
+import com.brunobrsr.ligaportugalcrud.model.Club;
+import com.brunobrsr.ligaportugalcrud.repository.ClubRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

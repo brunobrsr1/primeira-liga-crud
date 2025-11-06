@@ -1,5 +1,7 @@
-package com.brunobrsr.ligaportugalcrud;
+package com.brunobrsr.ligaportugalcrud.controller;
 
+import com.brunobrsr.ligaportugalcrud.model.Club;
+import com.brunobrsr.ligaportugalcrud.service.ClubService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
