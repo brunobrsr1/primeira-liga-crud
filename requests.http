@@ -1,0 +1,34 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+POST http://localhost:8080/api/clubs
+Content-Type: application/json
+
+{
+  "clubName": "Benfica",
+  "city": "Lisboa",
+  "yearFounded": 1904
+}
+
+###
+GET http://localhost:8080/api/clubs
+
+###
+DELETE http://localhost:8080/api/clubs/7
+
+###
+GET http://localhost:8080/api/clubs/6
+
+###
+PUT http://localhost:8080/api/clubs/6
+Content-Type: application/json
+
+{
+  "clubName": "Porto FC",
+  "city": "Porto",
+  "yearFounded": 1893
+}
+###
+
