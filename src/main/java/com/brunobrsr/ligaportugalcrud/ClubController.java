@@ -1,9 +1,8 @@
 package com.brunobrsr.ligaportugalcrud;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/clubs")
@@ -17,5 +16,23 @@ public class ClubController {
     @PostMapping
     public void addNewClub(@RequestBody Club club) {
         clubService.insertNewClub(club);
+    }
+
+    @GetMapping
+    public List<Club> getAllClubs() {
+        return clubService.getAllClubs();
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteClub(@PathVariable Long id) {
+        clubService.deleteClub(id);
+    }
+    @GetMapping("{id}")
+    public Club getClubById(@PathVariable Long id) {
+        return clubService.getClubById(id);
+    }
+    @PutMapping("{id}")
+    public void updateClub(@PathVariable Long id, @RequestBody Club updatedClub) {
+        clubService.updateClub(id, updatedClub);
     }
 }
