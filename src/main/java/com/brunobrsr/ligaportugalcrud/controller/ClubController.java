@@ -1,6 +1,7 @@
 package com.brunobrsr.ligaportugalcrud.controller;
 
 import com.brunobrsr.ligaportugalcrud.model.Club;
+import com.brunobrsr.ligaportugalcrud.model.Player;
 import com.brunobrsr.ligaportugalcrud.service.ClubService;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +37,14 @@ public class ClubController {
     @PutMapping("{id}")
     public void updateClub(@PathVariable Long id, @RequestBody Club updatedClub) {
         clubService.updateClub(id, updatedClub);
+    }
+    @PostMapping("{id}/players")
+    public void addPlayer(@PathVariable Long id, @RequestBody Player player) {
+        clubService.insertNewPlayer(id, player);
+    }
+
+    @GetMapping("{id}/players")
+    public List<Player> getPlayersByClubId(@PathVariable Long id) {
+        return clubService.getPlayersByClubId(id);
     }
 }

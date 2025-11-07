@@ -1,10 +1,9 @@
 package com.brunobrsr.ligaportugalcrud.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +14,9 @@ public class Club {
     private String clubName;
     private String city;
     private int yearFounded;
+    @JsonIgnore
+    @OneToMany(mappedBy = "club")
+    private List<Player> players;
 
     public Club() {}
 
@@ -29,6 +31,7 @@ public class Club {
     public String getClubName() { return clubName; }
     public String getCity() { return city; }
     public int getYearFounded() { return yearFounded; }
+    public List<Player> getPlayers() { return players; }
 
     public void setCity(String city) { this.city = city; }
     public void setYearFounded(int yearFounded) { this.yearFounded = yearFounded; }

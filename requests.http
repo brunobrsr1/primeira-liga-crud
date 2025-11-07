@@ -39,8 +39,27 @@ Content-Type: application/json
   "name": "Lionel Messi",
   "age": 38,
   "position": "Forward",
-  "shirtNumber": 10
+  "shirtNumber": 10,
+  "club": {
+    "id": 1,
+    "clubName": "Benfica",
+    "city": "Lisboa",
+    "yearFounded": 1904
+  }
 }
 ###
 GET http://localhost:8080/api/players
 
+###
+POST http://localhost:8080/api/clubs/1/players
+Content-Type: application/json
+
+{
+  "name": "Rafael Leão",
+  "age": 24,
+  "position": "Forward",
+  "shirtNumber": 17
+}
+
+###
+GET http://localhost:8080/api/clubs/1/players

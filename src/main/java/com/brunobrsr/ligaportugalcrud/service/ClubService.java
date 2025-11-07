@@ -1,7 +1,9 @@
 package com.brunobrsr.ligaportugalcrud.service;
 
 import com.brunobrsr.ligaportugalcrud.model.Club;
+import com.brunobrsr.ligaportugalcrud.model.Player;
 import com.brunobrsr.ligaportugalcrud.repository.ClubRepository;
+import com.brunobrsr.ligaportugalcrud.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +11,11 @@ import java.util.List;
 @Service
 public class ClubService {
 
-    private ClubRepository clubRepository;
+    private final PlayerRepository playerRepository;
+    private final ClubRepository clubRepository;
 
-    public ClubService(ClubRepository clubRepository) {
+    public ClubService(ClubRepository clubRepository, PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
         this.clubRepository = clubRepository;
     }
 
@@ -45,5 +49,16 @@ public class ClubService {
         }
 
         clubRepository.save(existingClub);
+    }
+
+    public List<Player> getPlayersByClubId(Long clubId) {
+        Club club = getClubById(clubId);
+        return club.getPlayers();
+    }
+
+    public void insertNewPlayer(Long clubId, Player player) {
+        Club club = getClubById(clubId);
+        player.setClub(club);
+        playerRepository.save(player);
     }
 }
