@@ -2,11 +2,13 @@ package com.brunobrsr.ligaportugalcrud.service;
 
 import com.brunobrsr.ligaportugalcrud.model.Player;
 import com.brunobrsr.ligaportugalcrud.repository.PlayerRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class PlayerService {
     private final PlayerRepository playerRepository;
 
@@ -14,10 +16,7 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    public void addNewPlayer(Player player) {
-        playerRepository.save(player);
-    }
-
+    @Transactional(readOnly = true)
     public List<Player> getAllPlayers() {
         return playerRepository.findAll();
     }

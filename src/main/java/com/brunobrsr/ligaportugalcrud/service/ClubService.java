@@ -4,11 +4,13 @@ import com.brunobrsr.ligaportugalcrud.model.Club;
 import com.brunobrsr.ligaportugalcrud.model.Player;
 import com.brunobrsr.ligaportugalcrud.repository.ClubRepository;
 import com.brunobrsr.ligaportugalcrud.repository.PlayerRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ClubService {
 
     private final PlayerRepository playerRepository;
@@ -23,21 +25,23 @@ public class ClubService {
         clubRepository.save(club);
     }
 
+    @Transactional(readOnly = true)
     public List<Club> getAllClubs() {
         return clubRepository.findAll();
     }
 
     public void deleteClub(Long id) {
-        clubRepository.deleteById(id);
+        Club club = getClubById(id);
+        clubRepository.delete(club);
     }
 
+    @Transactional(readOnly = true)
     public Club getClubById(Long id) {
         return clubRepository.findById(id).orElseThrow(() -> new IllegalStateException("Club with id " + id + " does not exist."));
     }
 
     public void updateClub(Long id, Club updatedClub) {
-        Club existingClub = clubRepository.findById(id).orElseThrow(() -> new IllegalStateException("Club with id " + id + " does not exist."));
-
+        Club existingClub = getClubById(id);
         if (updatedClub.getClubName() != null) {
             existingClub.setClubName(updatedClub.getClubName());
         }
@@ -51,6 +55,7 @@ public class ClubService {
         clubRepository.save(existingClub);
     }
 
+    @Transactional(readOnly = true)
     public List<Player> getPlayersByClubId(Long clubId) {
         Club club = getClubById(clubId);
         return club.getPlayers();
@@ -58,7 +63,7 @@ public class ClubService {
 
     public void insertNewPlayer(Long clubId, Player player) {
         Club club = getClubById(clubId);
-        player.setClub(club);
+        club.addPlayer(player);
         playerRepository.save(player);
     }
 }
