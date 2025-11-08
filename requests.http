@@ -7,9 +7,9 @@ POST http://localhost:8080/api/clubs
 Content-Type: application/json
 
 {
-  "clubName": "Sporting",
-  "city": "Lisboa",
-  "yearFounded": 1906
+  "clubName": "Porto FC",
+  "city": "Porto",
+  "yearFounded": 1893
 }
 
 ###
@@ -61,3 +61,6 @@ Content-Type: application/json
   "position": "ST",
   "shirtNumber": 9
 }
+
+###
+DELETE http://localhost:8080/api/players/2
