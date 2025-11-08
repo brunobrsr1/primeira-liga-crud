@@ -15,10 +15,6 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @PostMapping
-    public void addNewPlayer(@RequestBody Player player) {
-        playerService.addNewPlayer(player);
-    }
     @GetMapping
     public List<Player> getAllPlayers() {
         return playerService.getAllPlayers();
