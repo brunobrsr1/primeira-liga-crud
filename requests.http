@@ -7,59 +7,57 @@ POST http://localhost:8080/api/clubs
 Content-Type: application/json
 
 {
-  "clubName": "Benfica",
+  "clubName": "Sporting",
   "city": "Lisboa",
-  "yearFounded": 1904
+  "yearFounded": 1906
 }
 
 ###
 GET http://localhost:8080/api/clubs
 
 ###
-DELETE http://localhost:8080/api/clubs/7
+DELETE http://localhost:8080/api/clubs/3
 
 ###
-GET http://localhost:8080/api/clubs/6
+GET http://localhost:8080/api/clubs/3
 
 ###
-PUT http://localhost:8080/api/clubs/6
+PUT http://localhost:8080/api/clubs/3
 Content-Type: application/json
 
 {
-  "clubName": "Porto FC",
-  "city": "Porto",
-  "yearFounded": 1893
+  "clubName": "SC Braga",
+  "city": "Braga",
+  "yearFounded": 1950
 }
 ###
 
-POST http://localhost:8080/api/players
-Content-Type: application/json
-
-{
-  "name": "Lionel Messi",
-  "age": 38,
-  "position": "Forward",
-  "shirtNumber": 10,
-  "club": {
-    "id": 1,
-    "clubName": "Benfica",
-    "city": "Lisboa",
-    "yearFounded": 1904
-  }
-}
-###
 GET http://localhost:8080/api/players
 
 ###
-POST http://localhost:8080/api/clubs/1/players
+POST http://localhost:8080/api/clubs/2/players
 Content-Type: application/json
 
 {
-  "name": "Rafael Leão",
+  "name": "Diogo Costa",
   "age": 24,
-  "position": "Forward",
-  "shirtNumber": 17
+  "position": "GK",
+  "shirtNumber": 1
 }
 
 ###
 GET http://localhost:8080/api/clubs/1/players
+###
+
+GET http://localhost:8080/api/players/2
+
+###
+PUT http://localhost:8080/api/players/2
+Content-Type: application/json
+
+{
+  "name": "Pavlidis",
+  "age": 26,
+  "position": "ST",
+  "shirtNumber": 9
+}
